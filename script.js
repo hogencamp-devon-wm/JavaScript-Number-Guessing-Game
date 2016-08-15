@@ -15,6 +15,9 @@ while (game == true) {
     // Ask the user what they think the number is
     var userGuess = prompt("Guess a number bettween 1-100");
 
+    // Parse Int string answer into a number
+    var userGuess = parseInt(userGuess);
+
     // Track number of guesses
     var guesses = 1;
 
@@ -33,17 +36,26 @@ while (game == true) {
                 if (userGuess < randomNumber) {
                     // If number is to low
                     userGuess = prompt("Your to low\n\nGuess a number bettween 1-100");
+
+                    // Parse Int string answer into a number
+                    var userGuess = parseInt(userGuess);
+
                     guesses++;
                 }
                 else if (userGuess > randomNumber) {
                     // If number is to high
                     userGuess = prompt("Your to high\n\nGuess a number bettween 1-100");
+
+                    // Parse Int string answer into a number
+                    var userGuess = parseInt(userGuess);
+
                     guesses++;
                 }
-                else {
+                else if (userGuess == randomNumber) {
                     // If they got the number right
                     guesses++;
-                    game = confirm("You got it right the number was " + randomNumber + " it took you " + guesses + " guesses. Do you want to play again?");
+                    confirm("You got it right the number was " + randomNumber + " it took you " + guesses + " guesses. Do you want to play again?");
+
                 }
             }
 
@@ -53,11 +65,12 @@ while (game == true) {
             }
         }
     }
-
-
+    if (userGuess ==  randomNumber) {
+        game = confirm("You got it right the number was " + randomNumber + " it took you " + guesses + " guesses. Do you want to play again?");
+    }
 }
 
 // If they dont want to play
 if (game == false) {
-    alert("K, bye:(");
+    alert("K, bye :(");
 }
